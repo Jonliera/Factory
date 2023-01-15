@@ -26,9 +26,16 @@ namespace Factory.Controllers
    [HttpPost]
    public ActionResult Create(Machine machine)
    {
+    if(!ModelState.IsValid)
+    {
+      return View(machine);
+    }
+    else
+   {
     _db.Machines.Add(machine);
     _db.SaveChanges();
     return RedirectToAction("Index");
+   }
    }
    public ActionResult Details(int id)
    {
@@ -61,7 +68,7 @@ namespace Factory.Controllers
    public ActionResult Edit(int id)
    {
     Machine thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
-    ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name");
+    // ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name");
     return View(thisMachine);
    }
    [HttpPost]
