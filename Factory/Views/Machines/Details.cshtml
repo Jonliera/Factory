@@ -16,11 +16,16 @@
 }
 else 
 {
-  <h4>This Machine can be fix these engineers:</h4>
+  <h4>This Machine can be fixed by these engineers:</h4>
   <ul>
     @foreach (EngineerMachine join in Model.JoinEntities)
     {
-      <li>@join.Engineer.Name</li>
+      <li>Engineer: @join.Engineer.Name</li>
+      @using (Html.BeginForm("DeleteJoin","Machines"))
+      {
+        @Html.Hidden("joinId", @join.EngineerMachineId)
+        <input type="submit" value="Delete"/>
+      }
     }
   </ul>
 }
