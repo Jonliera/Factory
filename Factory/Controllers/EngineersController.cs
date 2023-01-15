@@ -16,16 +16,12 @@ namespace Factory.Controllers
     }
     public ActionResult Index()
     {
-      List<Engineer> model = _db.Engineers
-                            //  .Include(engineer => engineer.JoinEntities)
-                            //  .ThenInclude(join => join.Machine)
-                             .ToList();
-    return View(model);
+      List<Engineer> model = _db.Engineers.ToList();
+      return View(model);
     }
   
   public ActionResult Create()
   {
-    // ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
     return View();
   }
   [HttpPost]
@@ -33,7 +29,6 @@ namespace Factory.Controllers
   {
     if (!ModelState.IsValid)
     {
-      // ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
       return View(engineer);
     }
     else
@@ -46,7 +41,6 @@ namespace Factory.Controllers
   public ActionResult Details(int id)
   {
     Engineer thisEngineer = _db.Engineers
-                            // .Include(engineer => engineer.Machine)
                             .Include(engineer => engineer.JoinEntities)
                             .ThenInclude(join => join.Machine)
                             .FirstOrDefault(engineer => engineer.EngineerId == id);
@@ -55,7 +49,6 @@ namespace Factory.Controllers
   public ActionResult Edit(int id)
   {
     Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
-    // ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
     return View(thisEngineer);
   }
   [HttpPost]

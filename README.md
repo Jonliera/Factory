@@ -35,7 +35,7 @@ An app that allows the user to input as many engineers and machines as they want
 ```json
 {
     "ConnectionStrings": {
-        "DefaultConnection": "Server=localhost;Port=3306;database=factory;uid=root;pwd=[YOUR-PASSWORD-HERE];"
+        "DefaultConnection": "Server=localhost;Port=3306;database=jonathan_newfactory;uid=root;pwd=[YOUR-PASSWORD-HERE];"
     }
 }  
 ```
