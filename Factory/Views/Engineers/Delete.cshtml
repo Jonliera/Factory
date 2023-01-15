@@ -1,0 +1,19 @@
+@{
+  Layout="_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h2>Delete this Engineer?</h2>
+
+@Html.DisplayNameFor(model => model.Name) : @Html.DisplayFor(model => model.Name)
+@using (Html.BeginForm())
+{
+  <input type="sumbit" value="Delete"/>
+}
+
+<div>
+  <span>@Html.ActionLink("Back to Engineers", "Index")</span><br>
+  <span>@Html.ActionLink("Home", "Index", "Home")</span><br>
+  
+</div>
